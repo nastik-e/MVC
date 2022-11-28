@@ -30,11 +30,16 @@ class View {
 
     this.asyncIncrementButton = document.createElement("button");
     this.asyncIncrementButton.innerText = "increase in 1 second";
-    this.asyncIncrementButton.addEventListener('click', this.handleAsyncIncrease)
+    this.asyncIncrementButton.addEventListener(
+      "click",
+      this.handleAsyncIncrease
+    );
     this.asyncDecrementButton = document.createElement("button");
     this.asyncDecrementButton.innerText = "decrease in 1 second";
-    this.asyncDecrementButton.addEventListener('click', this.handleAsyncDecrease)
-
+    this.asyncDecrementButton.addEventListener(
+      "click",
+      this.handleAsyncDecrease
+    );
 
     this.containerButtons.appendChild(this.incrementButton);
     this.containerButtons.appendChild(this.decrementButton);
@@ -54,18 +59,16 @@ class View {
     this.updateCounter();
   };
   handleAsyncIncrease = () => {
-    this.controller
-      .asyncIncrease()
-      .then(() => {this.viewState = this.controller.getState()
-      this.updateCounter()});
-     
-  };
-  handleAsyncDecrease = () => {
-    this.controller
-      .asyncDecrease()
-      this.viewState = this.controller.getState()
+    this.controller.asyncIncrease().then(() => {
+      this.viewState = this.controller.getState();
       this.updateCounter();
-     
+    });
+  };
+  handleAsyncDecrease = (): void => {
+    this.controller.asyncDecrease().then((value) => {
+      this.viewState = value;
+      this.updateCounter();
+    });
   };
 
   updateCounter() {
