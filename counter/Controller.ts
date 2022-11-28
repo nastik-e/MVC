@@ -19,12 +19,11 @@ class Controller {
   asyncIncrease(): Promise<number> {
     return new Promise(() => {
       this.model.asyncIncrease();
-    })
+    });
   }
-  async asyncDecrease() {
-     await this.model.asyncDecrease();
-     return this.model.getState();
-    }
+  asyncDecrease(): Promise<number> {
+    return this.model.asyncDecrease();
   }
+}
 
 export default Controller;

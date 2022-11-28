@@ -13,11 +13,11 @@ class Model {
   asyncIncrease(): void {
     setTimeout(this.increase, 1000);
   }
- async asyncDecrease() {
-   await new Promise((resolve) => {
+  asyncDecrease(): Promise<number> {
+    return new Promise((resolve) => {
       setTimeout(() => {
         this.decrease();
-        resolve('1');
+        resolve(this.getState());
       }, 1000);
     });
   }
